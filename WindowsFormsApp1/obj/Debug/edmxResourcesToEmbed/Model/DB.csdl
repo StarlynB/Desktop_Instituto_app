@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="taller_informaticaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="curso">
+    <Key>
+      <PropertyRef Name="id_curso" />
+    </Key>
+    <Property Name="id_curso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cod_curso" Type="Int32" />
+    <Property Name="fecha_inicio" Type="DateTime" Precision="3" />
+    <Property Name="fecha_cierre" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="estudiantes" Relationship="Self.FK_curso" FromRole="cursos" ToRole="estudiantes" />
+    <NavigationProperty Name="prof_curso" Relationship="Self.FK_curso_curso" FromRole="cursos" ToRole="prof_curso" />
+    <NavigationProperty Name="curso_modulo" Relationship="Self.FK_curso_modulo" FromRole="cursos" ToRole="curso_modulo" />
+    <NavigationProperty Name="curso_horario" Relationship="Self.FK_cursos" FromRole="cursos" ToRole="curso_horario" />
+  </EntityType>
+  <EntityType Name="estudiante">
+    <Key>
+      <PropertyRef Name="id_estu" />
+    </Key>
+    <Property Name="id_estu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sexo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_nacimiento" Type="DateTime" Precision="3" />
+    <Property Name="cedula" Type="Int64" />
+    <Property Name="nacionalidad" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+    <Property Name="tipo_sangre" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="grado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="id_taller" Type="Int32" />
+    <Property Name="id_curso" Type="Int32" />
+    <Property Name="id_modulo" Type="Int32" />
+    <NavigationProperty Name="curso" Relationship="Self.FK_curso" FromRole="estudiantes" ToRole="cursos" />
+    <NavigationProperty Name="Est_prof" Relationship="Self.FK_Estudiante" FromRole="estudiantes" ToRole="Est_prof" />
+    <NavigationProperty Name="modulo" Relationship="Self.FK_modulo" FromRole="estudiantes" ToRole="modulos" />
+    <NavigationProperty Name="tallere" Relationship="Self.FK_taller" FromRole="estudiantes" ToRole="talleres" />
+  </EntityType>
+  <EntityType Name="horario">
+    <Key>
+      <PropertyRef Name="id_horario" />
+    </Key>
+    <Property Name="id_horario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tanda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dias" Type="Int32" />
+    <Property Name="Horas" Type="Int32" />
+    <NavigationProperty Name="curso_horario" Relationship="Self.FK_hora" FromRole="horarios" ToRole="curso_horario" />
+    <NavigationProperty Name="modulo_hora" Relationship="Self.FK_horas" FromRole="horarios" ToRole="modulo_hora" />
+  </EntityType>
+  <EntityType Name="loginUsuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="modulo">
+    <Key>
+      <PropertyRef Name="id_modulo" />
+    </Key>
+    <Property Name="id_modulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cod_modulo" Type="Int32" />
+    <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+    <Property Name="fecha_cierre" Type="DateTime" Precision="3" />
+    <Property Name="cant_horas" Type="Time" Precision="7" />
+    <Property Name="modulos_horas" Type="Int32" />
+    <NavigationProperty Name="estudiantes" Relationship="Self.FK_modulo" FromRole="modulos" ToRole="estudiantes" />
+    <NavigationProperty Name="curso_modulo" Relationship="Self.FK_modulo_modulo" FromRole="modulos" ToRole="curso_modulo" />
+    <NavigationProperty Name="modulo_hora" Relationship="Self.FK_modulos" FromRole="modulos" ToRole="modulo_hora" />
+  </EntityType>
+  <EntityType Name="profesore">
+    <Key>
+      <PropertyRef Name="id_prof" />
+    </Key>
+    <Property Name="id_prof" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sexo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_nacimiento" Type="DateTime" Precision="3" />
+    <Property Name="cedula" Type="Int64" />
+    <Property Name="nacionalidad" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
+    <Property Name="tipo_sangre" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="grado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="prof_curso" Relationship="Self.FK_prof_prof" FromRole="profesores" ToRole="prof_curso" />
+    <NavigationProperty Name="prof_taller" Relationship="Self.FK_prof_profe" FromRole="profesores" ToRole="prof_taller" />
+    <NavigationProperty Name="Est_prof" Relationship="Self.FK_profesor" FromRole="profesores" ToRole="Est_prof" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tallere">
+    <Key>
+      <PropertyRef Name="id_taller" />
+    </Key>
+    <Property Name="id_taller" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ubicacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="estudiantes" Relationship="Self.FK_taller" FromRole="talleres" ToRole="estudiantes" />
+    <NavigationProperty Name="prof_taller" Relationship="Self.FK_taller_tallers" FromRole="talleres" ToRole="prof_taller" />
+  </EntityType>
+  <EntityType Name="curso_horario">
+    <Key>
+      <PropertyRef Name="Id_curso_horario" />
+    </Key>
+    <Property Name="Id_curso_horario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="curso_id" Type="Int32" />
+    <Property Name="horas_id" Type="Int32" />
+    <NavigationProperty Name="curso" Relationship="Self.FK_cursos" FromRole="curso_horario" ToRole="cursos" />
+    <NavigationProperty Name="horario" Relationship="Self.FK_hora" FromRole="curso_horario" ToRole="horarios" />
+  </EntityType>
+  <EntityType Name="curso_modulo">
+    <Key>
+      <PropertyRef Name="Id_curso_modulo" />
+    </Key>
+    <Property Name="Id_curso_modulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="curso_id" Type="Int32" />
+    <Property Name="modulo_id" Type="Int32" />
+    <NavigationProperty Name="curso" Relationship="Self.FK_curso_modulo" FromRole="curso_modulo" ToRole="cursos" />
+    <NavigationProperty Name="modulo" Relationship="Self.FK_modulo_modulo" FromRole="curso_modulo" ToRole="modulos" />
+  </EntityType>
+  <EntityType Name="Est_prof">
+    <Key>
+      <PropertyRef Name="Id_Est_prof" />
+    </Key>
+    <Property Name="Id_Est_prof" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="profesor_id" Type="Int32" />
+    <Property Name="estudiantes_id" Type="Int32" />
+    <NavigationProperty Name="estudiante" Relationship="Self.FK_Estudiante" FromRole="Est_prof" ToRole="estudiantes" />
+    <NavigationProperty Name="profesore" Relationship="Self.FK_profesor" FromRole="Est_prof" ToRole="profesores" />
+  </EntityType>
+  <EntityType Name="modulo_hora">
+    <Key>
+      <PropertyRef Name="Id_modulo_curso" />
+    </Key>
+    <Property Name="Id_modulo_curso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="modulo_id" Type="Int32" />
+    <Property Name="hora_id" Type="Int32" />
+    <NavigationProperty Name="horario" Relationship="Self.FK_horas" FromRole="modulo_hora" ToRole="horarios" />
+    <NavigationProperty Name="modulo" Relationship="Self.FK_modulos" FromRole="modulo_hora" ToRole="modulos" />
+  </EntityType>
+  <EntityType Name="prof_curso">
+    <Key>
+      <PropertyRef Name="Id_prof_curso" />
+    </Key>
+    <Property Name="Id_prof_curso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prof_id" Type="Int32" />
+    <Property Name="curso_id" Type="Int32" />
+    <NavigationProperty Name="curso" Relationship="Self.FK_curso_curso" FromRole="prof_curso" ToRole="cursos" />
+    <NavigationProperty Name="profesore" Relationship="Self.FK_prof_prof" FromRole="prof_curso" ToRole="profesores" />
+  </EntityType>
+  <EntityType Name="prof_modulo">
+    <Key>
+      <PropertyRef Name="Id_prof_modulo" />
+    </Key>
+    <Property Name="Id_prof_modulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prof_id" Type="Int32" />
+    <Property Name="modulo_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="prof_taller">
+    <Key>
+      <PropertyRef Name="Id_prof_taller" />
+    </Key>
+    <Property Name="Id_prof_taller" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prof_id" Type="Int32" />
+    <Property Name="taller_id" Type="Int32" />
+    <NavigationProperty Name="profesore" Relationship="Self.FK_prof_profe" FromRole="prof_taller" ToRole="profesores" />
+    <NavigationProperty Name="tallere" Relationship="Self.FK_taller_tallers" FromRole="prof_taller" ToRole="talleres" />
+  </EntityType>
+  <Association Name="FK_curso">
+    <End Role="cursos" Type="Self.curso" Multiplicity="0..1" />
+    <End Role="estudiantes" Type="Self.estudiante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cursos">
+        <PropertyRef Name="id_curso" />
+      </Principal>
+      <Dependent Role="estudiantes">
+        <PropertyRef Name="id_curso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_curso_curso">
+    <End Role="cursos" Type="Self.curso" Multiplicity="0..1" />
+    <End Role="prof_curso" Type="Self.prof_curso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cursos">
+        <PropertyRef Name="id_curso" />
+      </Principal>
+      <Dependent Role="prof_curso">
+        <PropertyRef Name="curso_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_curso_modulo">
+    <End Role="cursos" Type="Self.curso" Multiplicity="0..1" />
+    <End Role="curso_modulo" Type="Self.curso_modulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cursos">
+        <PropertyRef Name="id_curso" />
+      </Principal>
+      <Dependent Role="curso_modulo">
+        <PropertyRef Name="curso_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cursos">
+    <End Role="cursos" Type="Self.curso" Multiplicity="0..1" />
+    <End Role="curso_horario" Type="Self.curso_horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cursos">
+        <PropertyRef Name="id_curso" />
+      </Principal>
+      <Dependent Role="curso_horario">
+        <PropertyRef Name="curso_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estudiante">
+    <End Role="estudiantes" Type="Self.estudiante" Multiplicity="0..1" />
+    <End Role="Est_prof" Type="Self.Est_prof" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estudiantes">
+        <PropertyRef Name="id_estu" />
+      </Principal>
+      <Dependent Role="Est_prof">
+        <PropertyRef Name="estudiantes_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_modulo">
+    <End Role="modulos" Type="Self.modulo" Multiplicity="0..1" />
+    <End Role="estudiantes" Type="Self.estudiante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modulos">
+        <PropertyRef Name="id_modulo" />
+      </Principal>
+      <Dependent Role="estudiantes">
+        <PropertyRef Name="id_modulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_taller">
+    <End Role="talleres" Type="Self.tallere" Multiplicity="0..1" />
+    <End Role="estudiantes" Type="Self.estudiante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="talleres">
+        <PropertyRef Name="id_taller" />
+      </Principal>
+      <Dependent Role="estudiantes">
+        <PropertyRef Name="id_taller" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_hora">
+    <End Role="horarios" Type="Self.horario" Multiplicity="0..1" />
+    <End Role="curso_horario" Type="Self.curso_horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="horarios">
+        <PropertyRef Name="id_horario" />
+      </Principal>
+      <Dependent Role="curso_horario">
+        <PropertyRef Name="horas_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_horas">
+    <End Role="horarios" Type="Self.horario" Multiplicity="0..1" />
+    <End Role="modulo_hora" Type="Self.modulo_hora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="horarios">
+        <PropertyRef Name="id_horario" />
+      </Principal>
+      <Dependent Role="modulo_hora">
+        <PropertyRef Name="hora_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_modulo_modulo">
+    <End Role="modulos" Type="Self.modulo" Multiplicity="0..1" />
+    <End Role="curso_modulo" Type="Self.curso_modulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modulos">
+        <PropertyRef Name="id_modulo" />
+      </Principal>
+      <Dependent Role="curso_modulo">
+        <PropertyRef Name="modulo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_modulos">
+    <End Role="modulos" Type="Self.modulo" Multiplicity="0..1" />
+    <End Role="modulo_hora" Type="Self.modulo_hora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modulos">
+        <PropertyRef Name="id_modulo" />
+      </Principal>
+      <Dependent Role="modulo_hora">
+        <PropertyRef Name="modulo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prof_prof">
+    <End Role="profesores" Type="Self.profesore" Multiplicity="0..1" />
+    <End Role="prof_curso" Type="Self.prof_curso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profesores">
+        <PropertyRef Name="id_prof" />
+      </Principal>
+      <Dependent Role="prof_curso">
+        <PropertyRef Name="prof_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prof_profe">
+    <End Role="profesores" Type="Self.profesore" Multiplicity="0..1" />
+    <End Role="prof_taller" Type="Self.prof_taller" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profesores">
+        <PropertyRef Name="id_prof" />
+      </Principal>
+      <Dependent Role="prof_taller">
+        <PropertyRef Name="prof_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_profesor">
+    <End Role="profesores" Type="Self.profesore" Multiplicity="0..1" />
+    <End Role="Est_prof" Type="Self.Est_prof" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profesores">
+        <PropertyRef Name="id_prof" />
+      </Principal>
+      <Dependent Role="Est_prof">
+        <PropertyRef Name="profesor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_taller_tallers">
+    <End Role="talleres" Type="Self.tallere" Multiplicity="0..1" />
+    <End Role="prof_taller" Type="Self.prof_taller" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="talleres">
+        <PropertyRef Name="id_taller" />
+      </Principal>
+      <Dependent Role="prof_taller">
+        <PropertyRef Name="taller_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="taller_informaticaEntities5" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cursos" EntityType="Self.curso" />
+    <EntitySet Name="estudiantes" EntityType="Self.estudiante" />
+    <EntitySet Name="horarios" EntityType="Self.horario" />
+    <EntitySet Name="loginUsuarios" EntityType="Self.loginUsuario" />
+    <EntitySet Name="modulos" EntityType="Self.modulo" />
+    <EntitySet Name="profesores" EntityType="Self.profesore" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="talleres" EntityType="Self.tallere" />
+    <EntitySet Name="curso_horario" EntityType="Self.curso_horario" />
+    <EntitySet Name="curso_modulo" EntityType="Self.curso_modulo" />
+    <EntitySet Name="Est_prof" EntityType="Self.Est_prof" />
+    <EntitySet Name="modulo_hora" EntityType="Self.modulo_hora" />
+    <EntitySet Name="prof_curso" EntityType="Self.prof_curso" />
+    <EntitySet Name="prof_modulo" EntityType="Self.prof_modulo" />
+    <EntitySet Name="prof_taller" EntityType="Self.prof_taller" />
+    <AssociationSet Name="FK_curso" Association="Self.FK_curso">
+      <End Role="cursos" EntitySet="cursos" />
+      <End Role="estudiantes" EntitySet="estudiantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_curso_curso" Association="Self.FK_curso_curso">
+      <End Role="cursos" EntitySet="cursos" />
+      <End Role="prof_curso" EntitySet="prof_curso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_curso_modulo" Association="Self.FK_curso_modulo">
+      <End Role="cursos" EntitySet="cursos" />
+      <End Role="curso_modulo" EntitySet="curso_modulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cursos" Association="Self.FK_cursos">
+      <End Role="cursos" EntitySet="cursos" />
+      <End Role="curso_horario" EntitySet="curso_horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estudiante" Association="Self.FK_Estudiante">
+      <End Role="estudiantes" EntitySet="estudiantes" />
+      <End Role="Est_prof" EntitySet="Est_prof" />
+    </AssociationSet>
+    <AssociationSet Name="FK_modulo" Association="Self.FK_modulo">
+      <End Role="modulos" EntitySet="modulos" />
+      <End Role="estudiantes" EntitySet="estudiantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_taller" Association="Self.FK_taller">
+      <End Role="talleres" EntitySet="talleres" />
+      <End Role="estudiantes" EntitySet="estudiantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_hora" Association="Self.FK_hora">
+      <End Role="horarios" EntitySet="horarios" />
+      <End Role="curso_horario" EntitySet="curso_horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_horas" Association="Self.FK_horas">
+      <End Role="horarios" EntitySet="horarios" />
+      <End Role="modulo_hora" EntitySet="modulo_hora" />
+    </AssociationSet>
+    <AssociationSet Name="FK_modulo_modulo" Association="Self.FK_modulo_modulo">
+      <End Role="modulos" EntitySet="modulos" />
+      <End Role="curso_modulo" EntitySet="curso_modulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_modulos" Association="Self.FK_modulos">
+      <End Role="modulos" EntitySet="modulos" />
+      <End Role="modulo_hora" EntitySet="modulo_hora" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prof_prof" Association="Self.FK_prof_prof">
+      <End Role="profesores" EntitySet="profesores" />
+      <End Role="prof_curso" EntitySet="prof_curso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prof_profe" Association="Self.FK_prof_profe">
+      <End Role="profesores" EntitySet="profesores" />
+      <End Role="prof_taller" EntitySet="prof_taller" />
+    </AssociationSet>
+    <AssociationSet Name="FK_profesor" Association="Self.FK_profesor">
+      <End Role="profesores" EntitySet="profesores" />
+      <End Role="Est_prof" EntitySet="Est_prof" />
+    </AssociationSet>
+    <AssociationSet Name="FK_taller_tallers" Association="Self.FK_taller_tallers">
+      <End Role="talleres" EntitySet="talleres" />
+      <End Role="prof_taller" EntitySet="prof_taller" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

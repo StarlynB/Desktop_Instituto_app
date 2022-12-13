@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="50758f6efc374967a30797f6514a3c29" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="taller_informaticaModel.curso" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.estudiante" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.horario" Width="1.5" PointX="3.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.loginUsuario" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.modulo" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.profesore" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.sysdiagram" Width="1.5" PointX="8.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.tallere" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.curso_horario" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.curso_modulo" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.Est_prof" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.modulo_hora" Width="1.5" PointX="9" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.prof_curso" Width="1.5" PointX="6" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.prof_modulo" Width="1.5" PointX="10.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="taller_informaticaModel.prof_taller" Width="1.5" PointX="8.25" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="taller_informaticaModel.FK_curso" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_curso_curso" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_curso_modulo" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_cursos" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_Estudiante" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_modulo" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_taller" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_hora" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_horas" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_modulo_modulo" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_modulos" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_prof_prof" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_prof_profe" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_profesor" ManuallyRouted="false" />
+        <AssociationConnector Association="taller_informaticaModel.FK_taller_tallers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

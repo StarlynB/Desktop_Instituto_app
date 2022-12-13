@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="taller_informaticaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'taller_informatica.dbo.curso_horario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="curso_horario">
+    <Key>
+      <PropertyRef Name="Id_curso_horario" />
+    </Key>
+    <Property Name="Id_curso_horario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="curso_id" Type="int" />
+    <Property Name="horas_id" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'taller_informatica.dbo.curso_modulo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="curso_modulo">
+    <Key>
+      <PropertyRef Name="Id_curso_modulo" />
+    </Key>
+    <Property Name="Id_curso_modulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="curso_id" Type="int" />
+    <Property Name="modulo_id" Type="int" />
+  </EntityType>
+  <EntityType Name="cursos">
+    <Key>
+      <PropertyRef Name="id_curso" />
+    </Key>
+    <Property Name="id_curso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="cod_curso" Type="int" />
+    <Property Name="fecha_inicio" Type="datetime" />
+    <Property Name="fecha_cierre" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'taller_informatica.dbo.Est_prof' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Est_prof">
+    <Key>
+      <PropertyRef Name="Id_Est_prof" />
+    </Key>
+    <Property Name="Id_Est_prof" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="profesor_id" Type="int" />
+    <Property Name="estudiantes_id" Type="int" />
+  </EntityType>
+  <EntityType Name="estudiantes">
+    <Key>
+      <PropertyRef Name="id_estu" />
+    </Key>
+    <Property Name="id_estu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="apellido" Type="varchar" MaxLength="50" />
+    <Property Name="sexo" Type="varchar" MaxLength="15" />
+    <Property Name="fecha_nacimiento" Type="datetime" />
+    <Property Name="cedula" Type="bigint" />
+    <Property Name="nacionalidad" Type="varchar" MaxLength="30" />
+    <Property Name="direccion" Type="varchar" MaxLength="80" />
+    <Property Name="telefono" Type="varchar" MaxLength="15" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="fecha_ingreso" Type="datetime" />
+    <Property Name="tipo_sangre" Type="varchar" MaxLength="5" />
+    <Property Name="grado" Type="varchar" MaxLength="10" />
+    <Property Name="status" Type="varchar" MaxLength="30" />
+    <Property Name="id_taller" Type="int" />
+    <Property Name="id_curso" Type="int" />
+    <Property Name="id_modulo" Type="int" />
+  </EntityType>
+  <EntityType Name="horarios">
+    <Key>
+      <PropertyRef Name="id_horario" />
+    </Key>
+    <Property Name="id_horario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tanda" Type="varchar" MaxLength="50" />
+    <Property Name="dias" Type="int" />
+    <Property Name="Horas" Type="int" />
+  </EntityType>
+  <EntityType Name="loginUsuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'taller_informatica.dbo.modulo_hora' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="modulo_hora">
+    <Key>
+      <PropertyRef Name="Id_modulo_curso" />
+    </Key>
+    <Property Name="Id_modulo_curso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="modulo_id" Type="int" />
+    <Property Name="hora_id" Type="int" />
+  </EntityType>
+  <EntityType Name="modulos">
+    <Key>
+      <PropertyRef Name="id_modulo" />
+    </Key>
+    <Property Name="id_modulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="cod_modulo" Type="int" />
+    <Property Name="fecha_ingreso" Type="datetime" />
+    <Property Name="fecha_cierre" Type="datetime" />
+    <Property Name="cant_horas" Type="time" Precision="7" />
+    <Property Name="modulos_horas" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'taller_informatica.dbo.prof_curso' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="prof_curso">
+    <Key>
+      <PropertyRef Name="Id_prof_curso" />
+    </Key>
+    <Property Name="Id_prof_curso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prof_id" Type="int" />
+    <Property Name="curso_id" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'taller_informatica.dbo.prof_modulo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="prof_modulo">
+    <Key>
+      <PropertyRef Name="Id_prof_modulo" />
+    </Key>
+    <Property Name="Id_prof_modulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prof_id" Type="int" />
+    <Property Name="modulo_id" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'taller_informatica.dbo.prof_taller' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="prof_taller">
+    <Key>
+      <PropertyRef Name="Id_prof_taller" />
+    </Key>
+    <Property Name="Id_prof_taller" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prof_id" Type="int" />
+    <Property Name="taller_id" Type="int" />
+  </EntityType>
+  <EntityType Name="profesores">
+    <Key>
+      <PropertyRef Name="id_prof" />
+    </Key>
+    <Property Name="id_prof" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="apellido" Type="varchar" MaxLength="50" />
+    <Property Name="sexo" Type="varchar" MaxLength="15" />
+    <Property Name="fecha_nacimiento" Type="datetime" />
+    <Property Name="cedula" Type="bigint" />
+    <Property Name="nacionalidad" Type="varchar" MaxLength="30" />
+    <Property Name="direccion" Type="varchar" MaxLength="80" />
+    <Property Name="telefono" Type="varchar" MaxLength="15" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+    <Property Name="fecha_ingreso" Type="datetime" />
+    <Property Name="tipo_sangre" Type="varchar" MaxLength="5" />
+    <Property Name="grado" Type="varchar" MaxLength="10" />
+    <Property Name="estado" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="talleres">
+    <Key>
+      <PropertyRef Name="id_taller" />
+    </Key>
+    <Property Name="id_taller" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="ubicacion" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_curso">
+    <End Role="cursos" Type="Self.cursos" Multiplicity="0..1" />
+    <End Role="estudiantes" Type="Self.estudiantes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cursos">
+        <PropertyRef Name="id_curso" />
+      </Principal>
+      <Dependent Role="estudiantes">
+        <PropertyRef Name="id_curso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_curso_curso">
+    <End Role="cursos" Type="Self.cursos" Multiplicity="0..1" />
+    <End Role="prof_curso" Type="Self.prof_curso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cursos">
+        <PropertyRef Name="id_curso" />
+      </Principal>
+      <Dependent Role="prof_curso">
+        <PropertyRef Name="curso_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_curso_modulo">
+    <End Role="cursos" Type="Self.cursos" Multiplicity="0..1" />
+    <End Role="curso_modulo" Type="Self.curso_modulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cursos">
+        <PropertyRef Name="id_curso" />
+      </Principal>
+      <Dependent Role="curso_modulo">
+        <PropertyRef Name="curso_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cursos">
+    <End Role="cursos" Type="Self.cursos" Multiplicity="0..1" />
+    <End Role="curso_horario" Type="Self.curso_horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cursos">
+        <PropertyRef Name="id_curso" />
+      </Principal>
+      <Dependent Role="curso_horario">
+        <PropertyRef Name="curso_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estudiante">
+    <End Role="estudiantes" Type="Self.estudiantes" Multiplicity="0..1" />
+    <End Role="Est_prof" Type="Self.Est_prof" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estudiantes">
+        <PropertyRef Name="id_estu" />
+      </Principal>
+      <Dependent Role="Est_prof">
+        <PropertyRef Name="estudiantes_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_hora">
+    <End Role="horarios" Type="Self.horarios" Multiplicity="0..1" />
+    <End Role="curso_horario" Type="Self.curso_horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="horarios">
+        <PropertyRef Name="id_horario" />
+      </Principal>
+      <Dependent Role="curso_horario">
+        <PropertyRef Name="horas_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_horas">
+    <End Role="horarios" Type="Self.horarios" Multiplicity="0..1" />
+    <End Role="modulo_hora" Type="Self.modulo_hora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="horarios">
+        <PropertyRef Name="id_horario" />
+      </Principal>
+      <Dependent Role="modulo_hora">
+        <PropertyRef Name="hora_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_modulo">
+    <End Role="modulos" Type="Self.modulos" Multiplicity="0..1" />
+    <End Role="estudiantes" Type="Self.estudiantes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modulos">
+        <PropertyRef Name="id_modulo" />
+      </Principal>
+      <Dependent Role="estudiantes">
+        <PropertyRef Name="id_modulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_modulo_modulo">
+    <End Role="modulos" Type="Self.modulos" Multiplicity="0..1" />
+    <End Role="curso_modulo" Type="Self.curso_modulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modulos">
+        <PropertyRef Name="id_modulo" />
+      </Principal>
+      <Dependent Role="curso_modulo">
+        <PropertyRef Name="modulo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_modulos">
+    <End Role="modulos" Type="Self.modulos" Multiplicity="0..1" />
+    <End Role="modulo_hora" Type="Self.modulo_hora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modulos">
+        <PropertyRef Name="id_modulo" />
+      </Principal>
+      <Dependent Role="modulo_hora">
+        <PropertyRef Name="modulo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prof_prof">
+    <End Role="profesores" Type="Self.profesores" Multiplicity="0..1" />
+    <End Role="prof_curso" Type="Self.prof_curso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profesores">
+        <PropertyRef Name="id_prof" />
+      </Principal>
+      <Dependent Role="prof_curso">
+        <PropertyRef Name="prof_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prof_profe">
+    <End Role="profesores" Type="Self.profesores" Multiplicity="0..1" />
+    <End Role="prof_taller" Type="Self.prof_taller" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profesores">
+        <PropertyRef Name="id_prof" />
+      </Principal>
+      <Dependent Role="prof_taller">
+        <PropertyRef Name="prof_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_profesor">
+    <End Role="profesores" Type="Self.profesores" Multiplicity="0..1" />
+    <End Role="Est_prof" Type="Self.Est_prof" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profesores">
+        <PropertyRef Name="id_prof" />
+      </Principal>
+      <Dependent Role="Est_prof">
+        <PropertyRef Name="profesor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_taller">
+    <End Role="talleres" Type="Self.talleres" Multiplicity="0..1" />
+    <End Role="estudiantes" Type="Self.estudiantes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="talleres">
+        <PropertyRef Name="id_taller" />
+      </Principal>
+      <Dependent Role="estudiantes">
+        <PropertyRef Name="id_taller" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_taller_tallers">
+    <End Role="talleres" Type="Self.talleres" Multiplicity="0..1" />
+    <End Role="prof_taller" Type="Self.prof_taller" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="talleres">
+        <PropertyRef Name="id_taller" />
+      </Principal>
+      <Dependent Role="prof_taller">
+        <PropertyRef Name="taller_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="taller_informaticaModelStoreContainer">
+    <EntitySet Name="cursos" EntityType="Self.cursos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="estudiantes" EntityType="Self.estudiantes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="horarios" EntityType="Self.horarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="loginUsuario" EntityType="Self.loginUsuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="modulos" EntityType="Self.modulos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="profesores" EntityType="Self.profesores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="talleres" EntityType="Self.talleres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="curso_horario" EntityType="Self.curso_horario" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [curso_horario].[Id_curso_horario] AS [Id_curso_horario], 
+    [curso_horario].[curso_id] AS [curso_id], 
+    [curso_horario].[horas_id] AS [horas_id]
+    FROM [dbo].[curso_horario] AS [curso_horario]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="curso_modulo" EntityType="Self.curso_modulo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [curso_modulo].[Id_curso_modulo] AS [Id_curso_modulo], 
+    [curso_modulo].[curso_id] AS [curso_id], 
+    [curso_modulo].[modulo_id] AS [modulo_id]
+    FROM [dbo].[curso_modulo] AS [curso_modulo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Est_prof" EntityType="Self.Est_prof" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Est_prof].[Id_Est_prof] AS [Id_Est_prof], 
+    [Est_prof].[profesor_id] AS [profesor_id], 
+    [Est_prof].[estudiantes_id] AS [estudiantes_id]
+    FROM [dbo].[Est_prof] AS [Est_prof]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="modulo_hora" EntityType="Self.modulo_hora" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [modulo_hora].[Id_modulo_curso] AS [Id_modulo_curso], 
+    [modulo_hora].[modulo_id] AS [modulo_id], 
+    [modulo_hora].[hora_id] AS [hora_id]
+    FROM [dbo].[modulo_hora] AS [modulo_hora]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="prof_curso" EntityType="Self.prof_curso" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [prof_curso].[Id_prof_curso] AS [Id_prof_curso], 
+    [prof_curso].[prof_id] AS [prof_id], 
+    [prof_curso].[curso_id] AS [curso_id]
+    FROM [dbo].[prof_curso] AS [prof_curso]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="prof_modulo" EntityType="Self.prof_modulo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [prof_modulo].[Id_prof_modulo] AS [Id_prof_modulo], 
+    [prof_modulo].[prof_id] AS [prof_id], 
+    [prof_modulo].[modulo_id] AS [modulo_id]
+    FROM [dbo].[prof_modulo] AS [prof_modulo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="prof_taller" EntityType="Self.prof_taller" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [prof_taller].[Id_prof_taller] AS [Id_prof_taller], 
+    [prof_taller].[prof_id] AS [prof_id], 
+    [prof_taller].[taller_id] AS [taller_id]
+    FROM [dbo].[prof_taller] AS [prof_taller]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_curso" Association="Self.FK_curso">
+      <End Role="cursos" EntitySet="cursos" />
+      <End Role="estudiantes" EntitySet="estudiantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_curso_curso" Association="Self.FK_curso_curso">
+      <End Role="cursos" EntitySet="cursos" />
+      <End Role="prof_curso" EntitySet="prof_curso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_curso_modulo" Association="Self.FK_curso_modulo">
+      <End Role="cursos" EntitySet="cursos" />
+      <End Role="curso_modulo" EntitySet="curso_modulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cursos" Association="Self.FK_cursos">
+      <End Role="cursos" EntitySet="cursos" />
+      <End Role="curso_horario" EntitySet="curso_horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estudiante" Association="Self.FK_Estudiante">
+      <End Role="estudiantes" EntitySet="estudiantes" />
+      <End Role="Est_prof" EntitySet="Est_prof" />
+    </AssociationSet>
+    <AssociationSet Name="FK_hora" Association="Self.FK_hora">
+      <End Role="horarios" EntitySet="horarios" />
+      <End Role="curso_horario" EntitySet="curso_horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_horas" Association="Self.FK_horas">
+      <End Role="horarios" EntitySet="horarios" />
+      <End Role="modulo_hora" EntitySet="modulo_hora" />
+    </AssociationSet>
+    <AssociationSet Name="FK_modulo" Association="Self.FK_modulo">
+      <End Role="modulos" EntitySet="modulos" />
+      <End Role="estudiantes" EntitySet="estudiantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_modulo_modulo" Association="Self.FK_modulo_modulo">
+      <End Role="modulos" EntitySet="modulos" />
+      <End Role="curso_modulo" EntitySet="curso_modulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_modulos" Association="Self.FK_modulos">
+      <End Role="modulos" EntitySet="modulos" />
+      <End Role="modulo_hora" EntitySet="modulo_hora" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prof_prof" Association="Self.FK_prof_prof">
+      <End Role="profesores" EntitySet="profesores" />
+      <End Role="prof_curso" EntitySet="prof_curso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prof_profe" Association="Self.FK_prof_profe">
+      <End Role="profesores" EntitySet="profesores" />
+      <End Role="prof_taller" EntitySet="prof_taller" />
+    </AssociationSet>
+    <AssociationSet Name="FK_profesor" Association="Self.FK_profesor">
+      <End Role="profesores" EntitySet="profesores" />
+      <End Role="Est_prof" EntitySet="Est_prof" />
+    </AssociationSet>
+    <AssociationSet Name="FK_taller" Association="Self.FK_taller">
+      <End Role="talleres" EntitySet="talleres" />
+      <End Role="estudiantes" EntitySet="estudiantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_taller_tallers" Association="Self.FK_taller_tallers">
+      <End Role="talleres" EntitySet="talleres" />
+      <End Role="prof_taller" EntitySet="prof_taller" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
